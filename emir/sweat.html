@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rimers-Tshirt</title>
+  <style>
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+
+  /* RİMERS küçük yazılar arka plan olarak */
+  background-image: 
+    repeating-linear-gradient(
+      45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    ),
+    repeating-linear-gradient(
+      -45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    );
+  background-size: 20px 20px;
+  position: relative;
+}
+
+/* Arka plan "rimers" yazısı için pseudo element kullanıyoruz */
+
+body::before {
+  content: "rimers r i m e r s r i m e r s r i m e r s r i m e r s ";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  font-size: 10px; /* küçük yazı boyutu */
+  color: rgba(255, 255, 255, 0.07); /* çok hafif beyaz */
+  letter-spacing: 5px;
+  white-space: pre-wrap;
+  pointer-events: none; /* tıklanabilirlik engellendi */
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  user-select: none;
+  overflow: hidden;
+  line-height: 12px;
+  font-weight: 600;
+}
+
+    .splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      z-index: 9999;
+    }
+    .hidden {
+      display: none;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      border-bottom: 1px solid #333;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      border-bottom: 1px solid #333;
+    }
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s, font-size 0.3s;
+    }
+    nav a:hover {
+      color: white;
+      font-size: 1.1em;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product {
+      background-color: #222;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 2px white;
+    }
+    .product p {
+      margin: 8px 0;
+      transition: font-weight 0.3s ease;
+    }
+    .product:hover p {
+      font-weight: bold;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Sepete eklendi bildirimi */
+    #notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      z-index: 10000;
+    }
+    #notification.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="splash" id="splash">SweatShirt</div>
+  <header>SweatShirt</header>
+  <nav>
+    <a href="ana.html#">Ana Sayfa</a>
+    <a href="tsh.html">Ti̇şört</a>
+    <a href="#">Sweatshirt</a>
+    <a href="pantalo.html">Pantolon</a>
+    <a href="#">Parfüm</a>
+    <a href="file:///C:/Users/emiru/sepet.html">Sepet</a>
+  </nav>
+
+  <div class="product-grid">
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 1" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b1.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b1.jpg" alt="Sweatshirt 1" />
+      <p>Kısa kollu boxy fit sweatshirt 1</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 2" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b2.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b2.jpg" alt="Sweatshirt 2" />
+      <p>Kısa kollu boxy fit sweatshirt 2</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 3" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b3.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b3.jpg" alt="Sweatshirt 3" />
+      <p>Kısa kollu boxy fit sweatshirt 3</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 4" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b4.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b4.jpg" alt="Sweatshirt 4" />
+      <p>Kısa kollu boxy fit sweatshirt 4</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 5" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b5.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b5.jpg" alt="Sweatshirt 5" />
+      <p>Kısa kollu boxy fit sweatshirt 5</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 6" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b6.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b6.jpg" alt="Sweatshirt 6" />
+      <p>Kısa kollu boxy fit sweatshirt 6</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 7" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b7.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b7.jpg" alt="Sweatshirt 7" />
+      <p>Kısa kollu boxy fit sweatshirt 7</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 8" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b8.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b8.jpg" alt="Sweatshirt 8" />
+      <p>Kısa kollu boxy fit sweatshirt 8</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 9" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b9.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b9.jpg" alt="Sweatshirt 9" />
+      <p>Kısa kollu boxy fit sweatshirt 9</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product" data-name="Kısa kollu boxy fit sweatshirt 10" data-price="750,00" data-img="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b10.jpg">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b10.jpg" alt="Sweatshirt 10" />
+      <p>Kısa kollu boxy fit sweatshirt 10</p>
+      <p>750,00 TL</p>
+    </div>
+  </div>
+
+  <div id="notification">Sepete eklendi</div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('splash').classList.add('hidden');
+    }, 500);
+
+    // Sepete ekleme ve bildirim kodu
+    const notification = document.getElementById('notification');
+
+    function showNotification() {
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 2000);
+    }
+
+    document.querySelectorAll('.product').forEach(prod => {
+      prod.addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        let name = prod.getAttribute('data-name');
+        let price = prod.getAttribute('data-price');
+        let img = prod.getAttribute('data-img');
+
+        // Benzersiz anahtar
+        let key = name;
+
+        if(cart[key]) {
+          cart[key].qty += 1;
+        } else {
+          cart[key] = {
+            name: name,
+            price: price,
+            img: img,
+            qty: 1
+          };
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        showNotification();
+      });
+    });
+  </script>
+</body>
+</html>

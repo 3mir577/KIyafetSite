@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rimer-Erkek</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+
+  /* RİMERS küçük yazılar arka plan olarak */
+  background-image: 
+    repeating-linear-gradient(
+      45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    ),
+    repeating-linear-gradient(
+      -45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    );
+  background-size: 20px 20px;
+  position: relative;
+}
+
+/* Arka plan "rimers" yazısı için pseudo element kullanıyoruz */
+
+body::before {
+  content: "rimers r i m e r s r i m e r s r i m e r s r i m e r s ";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  font-size: 10px; /* küçük yazı boyutu */
+  color: rgba(255, 255, 255, 0.07); /* çok hafif beyaz */
+  letter-spacing: 5px;
+  white-space: pre-wrap;
+  pointer-events: none; /* tıklanabilirlik engellendi */
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  user-select: none;
+  overflow: hidden;
+  line-height: 12px;
+  font-weight: 600;
+}
+    .splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      z-index: 9999;
+    }
+    .hidden {
+      display: none;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      border-bottom: 1px solid #333;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      border-bottom: 1px solid #333;
+    }
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s, font-size 0.3s;
+    }
+    nav a:hover {
+      color: white;
+      font-size: 1.1em;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product {
+  background-color: #222;
+  padding: px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px 2px white;
+}
+
+.product p {
+  margin: 8px 0;
+  transition: font-weight 0.3s ease;
+}
+
+.product:hover p {
+  font-weight: bold;
+}
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      height: auto;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="splash" id="splash">Erkek</div>
+  <header>Erkek</header>
+  <nav>
+    <a href="ana.html#">Ana Sayfa</a>
+    <a href="tsh.html">Tshi̇rt</a>
+    <a href="sweat.html">Sweatshirt</a>
+    <a href="pantalo.html">Pantolon</a>
+    <a href="#">Parfüm</a>
+  </nav>
+
+  <div class="product-grid">
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\1.jpg" alt="T-shirt 1">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <!-- Aynı yapıyı 4 kez daha kopyalayalım -->
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\2.jpg" alt="T-shirt 2">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\3.jpg" alt="T-shirt 3">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\4.jpg" alt="T-shirt 4">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\5.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b6.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+     <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b7.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+     <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b8.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+     <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b9.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+     <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\b10.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\a1.jpg" alt="T-shirt 1">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\a2.jpg" alt="T-shirt 2">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\a3.jpg" alt="T-shirt 3">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\a4.jpg" alt="T-shirt 4">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+    <div class="product">
+      <img src="C:\Users\emiru\OneDrive\Masaüstü\emir\Fotoğraflar\a5.jpg" alt="T-shirt 5">
+      <p>Kısa kollu boxy fit t-shirt</p>
+      <p>750,00 TL</p>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('splash').classList.add('hidden');
+    }, 800);
+  </script>
+</body>
+</html>
+ 

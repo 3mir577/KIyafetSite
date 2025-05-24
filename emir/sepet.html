@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sepetim - Rimers</title>
+  <style>
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+
+  /* RİMERS küçük yazılar arka plan olarak */
+  background-image: 
+    repeating-linear-gradient(
+      45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    ),
+    repeating-linear-gradient(
+      -45deg, 
+      transparent 0, 
+      transparent 10px, 
+      rgba(255, 255, 255, 0.05) 10px, 
+      rgba(255, 255, 255, 0.05) 12px
+    );
+  background-size: 20px 20px;
+  position: relative;
+}
+
+/* Arka plan "rimers" yazısı için pseudo element kullanıyoruz */
+
+body::before {
+  content: "rimers r i m e r s r i m e r s r i m e r s r i m e r s ";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  font-size: 10px; /* küçük yazı boyutu */
+  color: rgba(255, 255, 255, 0.07); /* çok hafif beyaz */
+  letter-spacing: 5px;
+  white-space: pre-wrap;
+  pointer-events: none; /* tıklanabilirlik engellendi */
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  user-select: none;
+  overflow: hidden;
+  line-height: 12px;
+  font-weight: 600;
+}
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: #222;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 15px;
+    }
+    .cart-item-details {
+      flex-grow: 1;
+    }
+    .cart-item-details p {
+      margin: 4px 0;
+    }
+    .remove-btn {
+      background: #f44336;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background: #ff7961;
+    }
+    #total-price {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-top: 30px;
+    }
+    #empty-msg {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 1.2rem;
+      color: #777;
+    }
+    a.back-link {
+      color: #aaa;
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.back-link:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <a href="erkek.html" class="back-link">&larr; Alışverişe devam et</a>
+  <h1>Sepetiniz</h1>
+  <div id="cart-items"></div>
+  <p id="empty-msg">Sepetiniz boş.</p>
+  <p id="total-price"></p>
+
+  <script>
+    const cartItemsEl = document.getElementById('cart-items');
+    const emptyMsg = document.getElementById('empty-msg');
+    const totalPriceEl = document.getElementById('total-price');
+
+    function priceToNumber(priceStr) {
+      // "750,00" gibi fiyatı 750.00 sayısına çevirir
+      return parseFloat(priceStr.replace('.', '').replace(',', '.'));
+    }
+    function numberToPrice(num) {
+      // Sayıyı "750,00" biçimine çevirir
+      return num.toFixed(2).replace('.', ',');
+    }
+
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      cartItemsEl.innerHTML = '';
+      let keys = Object.keys(cart);
+      if(keys.length === 0) {
+        emptyMsg.style.display = 'block';
+        totalPriceEl.textContent = '';
+        return;
+      }
+      emptyMsg.style.display = 'none';
+
+      let total = 0;
+      keys.forEach(key => {
+        let item = cart[key];
+        let priceNum = priceToNumber(item.price);
+        let itemTotal = priceNum * item.qty;
+        total += itemTotal;
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.img}" alt="${key}" />
+          <div class="cart-item-details">
+            <p><strong>${key}</strong></p>
+            <p>Adet: ${item.qty}</p>
+            <p>Birim Fiyat: ${item.price} TL</p>
+            <p>Toplam: ${numberToPrice(itemTotal)} TL</p>
+          </div>
+          <button class="remove-btn" data-key="${key}">X</button>
+        `;
+        cartItemsEl.appendChild(itemDiv);
+      });
+      totalPriceEl.textContent = `Toplam: ${numberToPrice(total)} TL`;
+
+      // Silme butonlarına tıklayınca
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.onclick = e => {
+          let key = e.target.getAttribute('data-key');
+          let cart = JSON.parse(localStorage.getItem('cart')) || {};
+          delete cart[key];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        };
+      });
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rimers - Galeri</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Küçük küçük Rimers yazıları arka planda */
+    .small-rimers-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: stretch;
+    }
+    .small-rimers {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: white;
+      opacity: 0.05;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 3px rgba(255,255,255,0.1);
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+      margin: 4px 6px;
+      animation: floatUp 10s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* Önde görünen Rimers yazısı */
+    .splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      z-index: 9999;
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 0.3em;
+      font-weight: 900;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.6);
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow:
+          0 0 10px rgba(255,255,255,0.8),
+          0 0 20px rgba(255,255,255,0.6);
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.5;
+        text-shadow: none;
+      }
+    }
+
+    /* Küçük Rimers yazılarının yukarı doğru yumuşak hareketi */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.05;
+      }
+      50% {
+        opacity: 0.07;
+      }
+      100% {
+        transform: translateY(-10px);
+        opacity: 0.05;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      border-bottom: 1px solid #333;
+      position: relative;
+      z-index: 10;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      position: relative;
+      z-index: 10;
+    }
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s, font-size 0.3s;
+    }
+    nav a:hover {
+      color: white;
+      font-size: 1.1em;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px 5px white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Küçük küçük Rimers yazıları -->
+  <div class="small-rimers-container" id="smallRimers"></div>
+
+  <!-- Önde görünen Rimers -->
+  <div class="splash" id="splash">Rimers</div>
+
+  <header>Ana Sayfa</header>
+  <nav>
+    <a href="#">Ana Sayfa</a>
+    <a href="erkek.html">Erkek</a>
+    <a href="#">Kadın</a>
+  </nav>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/1.jpg" alt="Ürün 1" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/3.jpg" alt="Ürün 3" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/b6.jpg" alt="Ürün B6" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/a2.jpg" alt="Ürün A2" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/a4.jpg" alt="Ürün A2" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/a7.jpg" alt="Ürün A2" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/b3.jpg" alt="Ürün A2" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/a1.jpg" alt="Ürün A2" />
+    </div>
+    <div class="gallery-item">
+      <img src="C:/Users/emiru/OneDrive/Masaüstü/emir/Fotoğraflar/8.jpg" alt="Ürün A2" />
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('splash').classList.add('hidden');
+    }, 2000);
+
+    // Küçük Rimers yazılarını container'a ekle (150 tane)
+    const container = document.getElementById('smallRimers');
+    const count = 150;
+
+    for(let i=0; i<count; i++) {
+      const span = document.createElement('span');
+      span.className = 'small-rimers';
+      span.textContent = 'RIMERS';
+
+      // Animation süre ve gecikmesini rastgele ayarla
+      span.style.animationDuration = (8 + Math.random() * 5) + 's';
+      span.style.animationDelay = (Math.random() * 10) + 's';
+
+      container.appendChild(span);
+    }
+  </script>
+</body>
+</html>
